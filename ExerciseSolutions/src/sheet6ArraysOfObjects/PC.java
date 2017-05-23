@@ -1,18 +1,12 @@
-package sheet5PracticeCreatingClasses;
+package sheet6ArraysOfObjects;
 
-import java.io.ObjectInputStream.GetField;
-
-import javax.sql.rowset.CachedRowSet;
-
-public class Ex5PersonalComputer {
+public class PC {
 	// member variables section // belong to the object
-	private int id;						// user id
 	private int ram;					// RAM
 	private int hd;						// Hard Drive
 	private String operatingSystem;		// Operating System
 	private int monitorSize;			// Monitor Size
 	private int cost;					// Cost
-	static int idCounter;				// user idCounter
 
 	// static class variables // belong to the class 
 	// Constants for RAM
@@ -29,19 +23,15 @@ public class Ex5PersonalComputer {
 	public static final int SIZE_22 = 22;
 
 	// constructors
-	public Ex5PersonalComputer(){
-		id=idCounter;
-		idCounter++;
-
+	public PC(){
+		
 	}
-	public Ex5PersonalComputer(int ram, int hd, String operatingSystem,
-			int monitorSize){
+	public PC(int ram, int hd, String operatingSystem, int monitorSize){
 		this();
 		setRam(ram);								// validation
 		setHd(hd);									// validation
 		this.operatingSystem = operatingSystem;		// passing a String,
-		setMonitorSize(monitorSize);				 // validation
-
+		setMonitorSize(monitorSize);				// validation
 	}
 
 	// methods, setters&getters
@@ -107,7 +97,6 @@ public class Ex5PersonalComputer {
 		return monitorSize;
 	}
 
-
 	//Cost
 	//Calculate cost
 	public double calculateCost(){
@@ -134,19 +123,13 @@ public class Ex5PersonalComputer {
 		else if (operatingSystem.equals("LINUX"))
 			cost += 20;
 
-				return cost;
+		return cost;
 	}
-
 
 	public int getCost(){
 		return cost;
 	}
 
-
-	// get ONLY for user id
-	int getId(){
-		return id;
-	} 
 	//get AsString
 	private String getRamAsString(){
 		switch(ram){
@@ -181,8 +164,7 @@ public class Ex5PersonalComputer {
 	}
 	// toString
 	public String toString(){
-		return "\nUser number : " + Ex5PersonalComputer.idCounter +
-				"\nRAM : " + getRamAsString() +
+		return  "\nRAM : " + getRamAsString() +
 				"\nHard drive : " + getHdAsString() +
 				"\nOperating System : " + operatingSystem +
 				"\nMonitor size : " + getMonitorSizeAsString() + "\"" +
