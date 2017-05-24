@@ -9,7 +9,7 @@ public class EmployeeClass {
 	private int noOfSickDays;
 	private double incrSalary;
 	//Static / class variables
-	public static int employeeNumberCounter;;
+	public static int employeeNumberCounter;
 
 	//Constructors
 	//Default constructor
