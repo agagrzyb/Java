@@ -7,6 +7,7 @@ public class EmployeeClass {
 		private int age;
 		private double salary;
 		private int noOfSickDays;
+		private double incrSalary;
 		//Static / class variables
 		public static int employeeNumberCounter;;
 
@@ -22,7 +23,7 @@ public class EmployeeClass {
 		}
 		//Constructor setting all the member variables
 		public EmployeeClass(int age, double salary, 
-				int noOfSickDays){
+				int noOfSickDays, double incrSalary){
 			setAge(age);
 			setSalary(salary);
 			setNoOfSickDays(noOfSickDays);
@@ -62,7 +63,9 @@ public class EmployeeClass {
 		//	this.employeeNumber = employeeNumber;
 		//}
 		//increase salary method
-		public void increaseSalary(double incrSalary){
+		public double increaseSalary(){
+			double incrSalary = salary *1.08;
+			return incrSalary;
 		}
 
 		//toString
@@ -70,8 +73,8 @@ public class EmployeeClass {
 		public String toString(){
 			return "\nEmployee name : " + name +
 					"\nAge : " + age +
-					"\nSalary : " + salary +
-					"\nNo of sick days : " + noOfSickDays;
+					"\nSalary : $ " + salary +
+					"\nNo of sick days : " + noOfSickDays +
+					String.format("\nIncrease salary : $ %.2f ", increaseSalary());
 		}
-
 }

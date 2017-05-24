@@ -1,7 +1,5 @@
 package sheet7EmployeeAndClockClasses;
 
-
-
 public class MainForEmployeeClass {
 
 	public static void main(String[] args) {
