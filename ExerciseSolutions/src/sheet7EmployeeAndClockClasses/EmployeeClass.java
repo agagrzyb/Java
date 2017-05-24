@@ -1,80 +1,81 @@
 package sheet7EmployeeAndClockClasses;
 
 public class EmployeeClass {
-	
-		//member variables section
-		private String name;
-		private int age;
-		private double salary;
-		private int noOfSickDays;
-		private double incrSalary;
-		//Static / class variables
-		public static int employeeNumberCounter;;
 
-		//Constructors
-		//Default constructor
-		public EmployeeClass(){
-			employeeNumberCounter++;
-		}
-		//Constructor setting the name
-		public EmployeeClass(String name){
-			this();
-			setName(name);
-		}
-		//Constructor setting all the member variables
-		public EmployeeClass(int age, double salary, 
-				int noOfSickDays, double incrSalary){
-			setAge(age);
-			setSalary(salary);
-			setNoOfSickDays(noOfSickDays);
-		}
+	//member variables section
+	private String name;
+	private int age;
+	private double salary;
+	private int noOfSickDays;
+	private double incrSalary;
+	//Static / class variables
+	public static int employeeNumberCounter;;
 
-		//methods, setters and getters
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public int getAge() {
-			return age;
-		}
-		public void setAge(int age) {
-			this.age = age;
-		}
-		public double getSalary() {
-			return salary;
-		}
-		public void setSalary(double salary) {
-			this.salary = salary;
-		}
-		public int getNoOfSickDays() {
-			return noOfSickDays;
-		}
-		public void setNoOfSickDays(int noOfSickDays) {
-			this.noOfSickDays = noOfSickDays;
-		}
-		
-		//not needed
-		//public int getEmployeeNumber() {
-		//	return employeeNumber;
-		//}
-		//public void setEmployeeNumber(int employeeNumber) {
-		//	this.employeeNumber = employeeNumber;
-		//}
-		//increase salary method
-		public double increaseSalary(){
-			double incrSalary = salary *1.08;
-			return incrSalary;
-		}
+	//Constructors
+	//Default constructor
+	public EmployeeClass(){
+		employeeNumberCounter++;
+	}
+	//Constructor setting the name
+	public EmployeeClass(String name){
+		this();
+		setName(name);
+	}
+	//Constructor setting all the member variables
+	public EmployeeClass(String name, int age, double salary, 
+			int noOfSickDays, double incrSalary){
+		this();
+		setName(name);
+		setAge(age);
+		setSalary(salary);
+		setNoOfSickDays(noOfSickDays);
+	}
 
-		//toString
-		@Override
-		public String toString(){
-			return "\nEmployee name : " + name +
-					"\nAge : " + age +
-					"\nSalary : $ " + salary +
-					"\nNo of sick days : " + noOfSickDays +
-					String.format("\nIncrease salary : $ %.2f ", increaseSalary());
-		}
+	//methods, setters and getters
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public int getNoOfSickDays() {
+		return noOfSickDays;
+	}
+	public void setNoOfSickDays(int noOfSickDays) {
+		this.noOfSickDays = noOfSickDays;
+	}
+
+	//not needed
+	//public int getEmployeeNumber() {
+	//	return employeeNumber;
+	//}
+	//public void setEmployeeNumber(int employeeNumber) {
+	//	this.employeeNumber = employeeNumber;
+	//}
+	//increase salary method
+	public double increaseSalary(){
+		double incrSalary = salary *1.08;
+		return incrSalary;
+	}
+	//toString
+	@Override
+	public String toString(){
+		return "\nEmployee name : " + name +
+				"\nAge : " + age +
+				"\nSalary : $ " + salary +
+				"\nNo of sick days : " + noOfSickDays +
+				String.format("\nIncrease salary : $ %.2f ", increaseSalary());
+	}
 }

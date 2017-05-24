@@ -11,7 +11,7 @@ public class MainForEmployeeClass {
 		Employee1.setSalary(45_000);
 		Employee1.setNoOfSickDays(6);
 		System.out.println(Employee1);
-	
+
 		System.out.println("----------------------");
 		EmployeeClass Employee2 = new EmployeeClass();
 		System.out.print("Employee number : " + 
