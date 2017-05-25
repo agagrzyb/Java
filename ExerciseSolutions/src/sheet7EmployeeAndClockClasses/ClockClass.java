@@ -40,29 +40,32 @@ public class ClockClass {
 	//Increment each variable - methods
 	public void incrHours(int incrHours){
 		hours += incrHours;
-		if(hours>23){
+		if(hours >= 0 && hours>23){
 			hours = hours % 24;
 		}
 	}
 	public void incrMinutes(int incrMinutes){
 		minutes += incrMinutes;
-		if(minutes>59){
+		if(minutes >= 0 && minutes>59){
 			hours+=1;
 			minutes=minutes % 60;
 		}
 	}
 	public void incrSeconds(int incrSeconds){
 		seconds += incrSeconds;
-		if(seconds>59){
+		if(seconds >= 0 && seconds>59){
 			minutes+=1;
 			seconds=seconds % 60;
 		}
 	}
 	//Reset time method
 	public void resetTime(){
+		 //hours = minutes = seconds =0;
 		hours = 0;
 		minutes = 0;
 		seconds = 0;
+		
+		
 
 	}
 
