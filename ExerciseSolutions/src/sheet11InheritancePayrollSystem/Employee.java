@@ -40,12 +40,13 @@ public abstract class Employee {
 	}
 	
 	//Abstract method
+	public abstract void earnings();
 	
 	//toString
 	public String toString(){
 		return "\nFirst name : " + firstName +
 				"\nLast name : " + lastName +
-				"\nEmployee dateOfBirth : "+dateOfBirth;
+				"\nDate Of Birth : "+ dateOfBirth;
 				//String.format("%g%02d%d",
 				//		dateOfBirth.get(ChronoField.DAY_OF_MONTH),
 				//		dateOfBirth.get(ChronoField.MONTH_OF_YEAR),
