@@ -24,7 +24,7 @@ public class MainForShape {
 
 		//create a Shape array
 		Shape [] allShapes = {r,t,c,r2,t2,c2};
-		//print out its colours
+		//print out its colors
 		for(Shape one: allShapes){
 			System.out.println("Colour : " + one.getColour());
 		}

@@ -14,9 +14,6 @@ public class Triangle extends Shape{
 	public void draw(){
 		System.out.println("\nDrawing a Triangle");
 	}
-	//toString
-	@Override
-	public String toString() {
-		return "-----Triangle class-----\n" + super.toString();
-	}
+	//toString...from superString
+	
 }
