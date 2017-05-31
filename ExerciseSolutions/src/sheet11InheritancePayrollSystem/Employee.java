@@ -40,7 +40,7 @@ public abstract class Employee {
 	}
 	
 	//Abstract method
-	public abstract void earnings();
+	public abstract double getEarnings();
 	
 	//toString
 	public String toString(){

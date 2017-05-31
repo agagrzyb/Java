@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public final class Boss extends Employee {
 	//member variables
 	private double weeklySalary;
+	private double earnings;
 
 	//constructors
 	public Boss(){
@@ -23,16 +24,20 @@ public final class Boss extends Employee {
 	public void setWeeklySalary(double weeklySalary) {
 		this.weeklySalary = weeklySalary;
 	}
-	//Abstract method
-	public void earnings(){
-		System.out.println();
+	//Implementing Abstract Method from Parent class, 
+	//an earnings method to calculate the Boss's earnings
+	public double getEarnings(){
+		earnings = weeklySalary*52;
+		return earnings;
+		//System.out.println("");
 	}
 
 	//toString
 	@Override
 	public String toString() {
 		return "\nBoss : " + super.toString() +
-				"\nWeekly Salary : $" + weeklySalary;
+				"\nWeekly Salary : $" + weeklySalary +
+				"\n***Boss Earnings*** : $" + getEarnings();
 	}
 
 }
