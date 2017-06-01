@@ -1,28 +1,20 @@
 package sheet12CustomerWithPizzaArray;
 
-import java.util.Arrays;
-
 public class Customer {
 	//member variables
 	private String name;
 	private String address;
 	private String phone;
 	private Pizza [] pizzas; // an array of Pizza objects
-	private double totalCost;
 		
-	//constructors
-	public Customer(){
-		
-	}
+	//constructor	
 	public Customer(String name, String address, String phone, Pizza[] pizzas) {
-		super();
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
 		this.pizzas = pizzas;
 	}
 	//methods
-
 	public String getName() {
 		return name;
 	}
@@ -46,20 +38,28 @@ public class Customer {
 	}
 	public void setPizzas(Pizza[] pizzas) {
 		this.pizzas = pizzas;
-	}
+	}//getTotalCost only... and loop through all pizzas to calculate TotalCost
 	public double getTotalCost() {
+		double totalCost = 0;
+		
+		for(Pizza one : pizzas ){
+			totalCost += one.calculatePrice();
+		}
 		return totalCost;
 	}
-	public void setTotalCost(double totalCost) {
-		this.totalCost = totalCost;
-	}
 	 //toString
-	@Override
-	public String toString() {
-		return "\nCustomer name = " + name + 
-				"\nAddress = " + address + 
-				"\nPhone = " + phone + 
-				"\nPizzas = "+ Arrays.toString(pizzas) + 
-				"\nTotal Cost = " + getTotalCost() ;
+	public String toString(){
+	String text = "Name : " + name;
+	text += "\nAddress: " + address;
+	text += "\nPhone : " + phone;
+	
+	for(int i = 0; i < pizzas.length;i++ ){
+		text +="\n" + (i + 1) + ": " + pizzas[i];
+		if(i != pizzas.length - 1)
+			text += ", ";
 	}
+	text += String.format("\nTotal Cost : $%.2f", getTotalCost());
+	
+	return text;
+ }
 }
