@@ -1,7 +1,7 @@
 package sheet13OwnerWithPetArray;
 
-public class Hamster extends Pet  {
-	
+public class Hamster extends Pet implements Mammal {
+
 	//constructors
 
 	public Hamster() {
@@ -11,12 +11,25 @@ public class Hamster extends Pet  {
 
 	public Hamster(String name, String breed, int age, String colour, boolean isFemale) {
 		super(name, breed, age, colour, isFemale);
-		// TODO Auto-generated constructor stub
+
 	}	
 	//methods
 
 	public String getTypeOfAnimal(){
-		return " ";
+		return "Hamster";
+	}
+
+	//interface Mammal
+	@Override
+	public void sleep() {
+		System.out.println("Sleep time...");
+
+	}
+
+	@Override
+	public void walk() {
+		System.out.println("Walk time...");
+
 	}
 	//toString
 	public String toString(){

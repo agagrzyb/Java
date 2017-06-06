@@ -11,7 +11,7 @@ public class Snake extends Pet {
 
 	}
 	public String getTypeOfAnimal(){
-		return " ";
+		return " Snake";
 	}
 	//toString
 	public String toString(){

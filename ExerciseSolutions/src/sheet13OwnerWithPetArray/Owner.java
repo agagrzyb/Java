@@ -7,6 +7,7 @@ public class Owner {
 	private String name;
 	private String address;
 	private String phoneNumber;
+	// member variable :  array of Pets
 	private Pet [] pets;
 
 	//constructors
@@ -47,9 +48,22 @@ public class Owner {
 	//toString
 	@Override
 	public String toString() {
-		return "Owner : name = " + name + ", "+
-				"address = " + address + ", "+
-				" phoneNumber = " + phoneNumber +
-				", pets = "+ Arrays.toString(pets);
+		String text = "\nName : " + name;
+				text += "\nAddress : " + address;
+				text += "\nPhone number : " + phoneNumber;
+				
+				for (int i=0; i<pets.length;i++){
+					
+					text += "\n" + (i + 1) + ": " + pets[i];
+					if (i != pets.length -1)
+						text += ", ";
+				}
+				
+				return text;
+				
+			//return "Owner : name = " + name + ", "+
+				//"address = " + address + ", "+
+				//" phoneNumber = " + phoneNumber +
+				//", pets = "+ Arrays.toString(pets);
 	}
 }

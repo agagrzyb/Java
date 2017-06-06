@@ -71,6 +71,7 @@ public abstract class Pet {
 				", breed = " + breed + 
 				", age = " + age + 
 				", colour = " + colour + 
-				", isFemale = "+ isFemale;
+				", Female or Male ? : " + String.format( (isFemale == true) ? "Female" : "Male");
 	}
 }
+//(average >= 50) ? "Pass" : "Fail";

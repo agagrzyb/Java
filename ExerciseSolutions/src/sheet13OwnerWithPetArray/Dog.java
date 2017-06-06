@@ -1,6 +1,6 @@
 package sheet13OwnerWithPetArray;
 
-public class Dog extends Pet {
+public class Dog extends Pet implements Mammal {
 	//member variables
 	private String microChipNumber;
 	private boolean isMicroChipped;
@@ -45,13 +45,27 @@ public class Dog extends Pet {
 	*/
 	
 	public String getTypeOfAnimal(){
-		return " ";
+		return " Dog";
+	}	
+	
+	// interface Mammal
+		@Override
+	public void sleep() {
+			System.out.println("Sleep time...");
+		
+	}
+	@Override
+	public void walk() {
+		System.out.println("Walk time...");
+		
+	
 	}
 	//toString
 	@Override
 	public String toString() {
 		return "Dog : " + super.toString() +
 				", Micro Chip Number = " + microChipNumber + 
-				", isMicroChipped = " + isMicroChipped;
+				", is Micro-Chipped ? : " + String.format( (isMicroChipped == true) ? "Yes" : "No");
 	}
+	
 }
