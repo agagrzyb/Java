@@ -2,7 +2,7 @@ package sheet13OwnerWithPetArray;
 
 public class Cat extends Pet implements Mammal {
 	//member variables
-	private int numOfLives;
+	private int numOfLives=9;
 
 	//constructors
 	public Cat() {
@@ -26,7 +26,7 @@ public class Cat extends Pet implements Mammal {
 		this.numOfLives = numOfLives;
 	}
 	public void justLostALife(){
-
+		numOfLives--;
 	}
 
 	public String getTypeOfAnimal(){
@@ -37,11 +37,12 @@ public class Cat extends Pet implements Mammal {
 
 	@Override
 	public void sleep() {
-		System.out.println("Sleep time...");
+		System.out.println(getName() + " Sleep time...");
 	}
 	@Override
 	public void walk() {
-		System.out.println("Walk time...");
+		System.out.println(getName() + " "
+				+ "Walk time...");
 	}
 
 	//toString

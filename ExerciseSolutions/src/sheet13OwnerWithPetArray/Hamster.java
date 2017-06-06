@@ -22,13 +22,13 @@ public class Hamster extends Pet implements Mammal {
 	//interface Mammal
 	@Override
 	public void sleep() {
-		System.out.println("Sleep time...");
+		System.out.println(getName() + " Sleep time...");
 
 	}
 
 	@Override
 	public void walk() {
-		System.out.println("Walk time...");
+		System.out.println(getName() + " Walk time...");
 
 	}
 	//toString

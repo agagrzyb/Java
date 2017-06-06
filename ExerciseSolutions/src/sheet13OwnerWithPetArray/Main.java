@@ -42,7 +42,7 @@ public class Main {
 		}
 		
 		//array of Pets
-		System.out.println("Array of pets...  Interface.... ");
+		System.out.println("\nArray of pets...  Interface.... ");
 		Pet [] allPets = {snake2, cat2, dog2, dog3, hamster2};
 		for(int i=0;i<allPets.length;i++){
 			
