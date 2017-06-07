@@ -8,6 +8,12 @@ public interface Apprentice {
 	int PHASE_FOUR = 4;
 	int PHASE_FIVE = 5;
 	int PHASE_SIX = 6;
+	
 	//abstract methods
+	void setPhase();
+	int getPhase();
+	
+	void setEmployersName();
+	String getEmployersName();
 
 }
