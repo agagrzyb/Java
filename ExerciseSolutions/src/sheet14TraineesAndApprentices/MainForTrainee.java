@@ -34,6 +34,7 @@ public class MainForTrainee {
 				System.out.println("Apprentice PHASE TWO Employers Name : " + 
 						((Apprentice) one).getEmployersName() +
 						"\nApprentice's name : " + one.getName()); //one.getName()!!!! to get name
+				
 
 			}
 		}
