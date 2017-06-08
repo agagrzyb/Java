@@ -7,7 +7,14 @@ public class MainForEmployeeClassExceptions {
 		System.out.print("Employee number : " + 
 				EmployeeClassExceptions.employeeNumberCounter);
 		Employee1.setName("Mary");
-		Employee1.setAge(45);
+		//try catch block
+		try{
+			Employee1.setAge(85);
+		}catch(InvalidAgeException e){
+			System.out.println(" Invalid age");
+			e.printStackTrace();
+		}
+
 		Employee1.setSalary(45_000);
 		Employee1.setNoOfSickDays(6);
 		System.out.println(Employee1);
@@ -17,7 +24,14 @@ public class MainForEmployeeClassExceptions {
 		System.out.print("Employee number : " + 
 				EmployeeClassExceptions.employeeNumberCounter);
 		Employee2.setName("John");
-		Employee2.setAge(40);
+		//try catch block
+		try{
+			Employee2.setAge(40);
+		}catch(InvalidAgeException e){
+			System.out.println(" Invalid age");
+			e.printStackTrace();
+		}
+
 		Employee2.setSalary(48_000);
 		Employee2.setNoOfSickDays(8);
 		System.out.println(Employee2);
@@ -27,7 +41,14 @@ public class MainForEmployeeClassExceptions {
 		System.out.print("Employee number : " + 
 				EmployeeClassExceptions.employeeNumberCounter);
 		Employee3.setName("Nick");
-		Employee3.setAge(28);
+		//try catch block
+		try{
+			Employee3.setAge(28);
+		}catch(InvalidAgeException e){
+			System.out.println(" Invalid age");
+			e.printStackTrace();
+		}
+
 		Employee3.setSalary(28_000);
 		Employee3.setNoOfSickDays(12);
 		System.out.println(Employee3);

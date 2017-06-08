@@ -23,7 +23,7 @@ public class EmployeeClassExceptions {
 	}
 	//Constructor setting all the member variables
 	public EmployeeClassExceptions(String name, int age, double salary, 
-			int noOfSickDays, double incrSalary){
+			int noOfSickDays, double incrSalary) throws InvalidAgeException {
 		this();
 		setName(name);
 		setAge(age);
@@ -41,9 +41,15 @@ public class EmployeeClassExceptions {
 	public int getAge() {
 		return age;
 	}
-	public void setAge(int age) {
-		this.age = age;
+
+	public void setAge(int age) throws InvalidAgeException{
+		if(age < 16 || age > 70){
+			throw new InvalidAgeException (age + " Invalid age");
+		}else{
+			this.age = age;
+		}
 	}
+
 	public double getSalary() {
 		return salary;
 	}
@@ -56,14 +62,6 @@ public class EmployeeClassExceptions {
 	public void setNoOfSickDays(int noOfSickDays) {
 		this.noOfSickDays = noOfSickDays;
 	}
-
-	//not needed
-	//public int getEmployeeNumber() {
-	//	return employeeNumber;
-	//}
-	//public void setEmployeeNumber(int employeeNumber) {
-	//	this.employeeNumber = employeeNumber;
-	//}
 	//increase salary method
 	public double increaseSalary(){
 		double incrSalary = salary *1.08;

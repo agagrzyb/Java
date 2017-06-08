@@ -1,17 +1,12 @@
 package sheet15_1_Exceptions;
 
-public class InvalidAgeException extends Exception{
 
-}
+ public class InvalidAgeException extends Exception {
 
-
-/*
- * public class InvalidPaymentFrequency extends Exception {
-
-	public InvalidPaymentFrequency() {}
+	public InvalidAgeException() {}
 	
-	public InvalidPaymentFrequency(String message) {
+	public InvalidAgeException(String message) {
 		super(message);
 	}
 }
-*/
+

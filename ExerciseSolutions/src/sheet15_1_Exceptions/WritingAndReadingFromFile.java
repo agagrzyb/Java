@@ -56,6 +56,8 @@ public class WritingAndReadingFromFile {
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Something else happened");
 			e.printStackTrace();
+		}finally{
+			System.out.println("A finally block will ALWAYS execute");
 		}
 	}
 }
