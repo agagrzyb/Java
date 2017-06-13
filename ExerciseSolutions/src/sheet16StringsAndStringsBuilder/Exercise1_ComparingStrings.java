@@ -6,7 +6,7 @@ public class Exercise1_ComparingStrings {
 		String strA = new String ("Monday");
 		String strB = new String ("Monday");
 		String strC = "Tuesday";  //SCP
-		String strD = "Tuesday";  //SCP
+		String strD = "Tuesday";  //SCP  // or strC = strD
 		String strE = new String ("Tuesday");
 
 

@@ -18,13 +18,13 @@ public class Excercise5_SearchForALetter {
 			char [] letters = word.toCharArray();
 			for(int i=0; i<letters.length; i++){ 
 				if(i == word.indexOf(character)){
-					//System.out.println("\nCharacter " + character  + " was found at position : " + letters[i]);
-					System.out.println("\nCharacter " + character  + " was found at position : " + (word.indexOf(character)+1));
+					//System.out.println("\nCharacter " + character  + " was found at position : " + (i+1));
+					System.out.println("Character " + character  + " was found at position : " + (word.indexOf(character)+1));
 				}else{
 					System.out.println(character  + " was not found ");	
 				}
 			}
-		}
+		}	  
 		scanner.close();
 		System.out.println("End of work...");
 	}
