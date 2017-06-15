@@ -2,12 +2,8 @@ package sheet17_ArrayLists;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
-
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.w3c.dom.NameList;
 
 public class Exercise1_ArrayListOfStrings {
 
