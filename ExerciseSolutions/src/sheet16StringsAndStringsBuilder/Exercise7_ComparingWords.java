@@ -2,7 +2,7 @@ package sheet16StringsAndStringsBuilder;
 
 import java.util.Scanner;
 
-public class Excercise7_ComparingWords {
+public class Exercise7_ComparingWords {
 
 	public static void main(String[] args) {
 		//ask the user to input two words and compare them

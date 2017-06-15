@@ -2,7 +2,7 @@ package sheet16StringsAndStringsBuilder;
 
 import java.util.Scanner;
 
-public class Excercise5_SearchForALetter {
+public class Exercise5_SearchForALetter {
 
 	public static void main(String[] args) {
 

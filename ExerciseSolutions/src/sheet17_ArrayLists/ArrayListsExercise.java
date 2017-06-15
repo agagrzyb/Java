@@ -2,7 +2,7 @@ package sheet17_ArrayLists;
 
 import java.util.ArrayList;
 
-public class ArrayListsExcercise {
+public class ArrayListsExercise {
 
 	public static void main(String[] args) {
 
