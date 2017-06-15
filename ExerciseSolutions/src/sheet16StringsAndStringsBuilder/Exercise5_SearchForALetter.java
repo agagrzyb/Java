@@ -12,19 +12,22 @@ public class Exercise5_SearchForALetter {
 			String word = scanner.nextLine();		
 			System.out.println("Word : " + word);
 			System.out.println("Enter a search character : ");
-			String character = scanner.nextLine();
+			char character = scanner.nextLine().charAt(0); // .charAt(0) will return the first character in the string/char
 			System.out.println("Character : " + character);
 			//converting String to a character array
 			char [] letters = word.toCharArray();
+			//set boolean
+			boolean isFound = false;
+			//loop through char [] letters array
 			for(int i=0; i<letters.length; i++){ 
-				if(i == word.indexOf(character)){
-					//System.out.println("\nCharacter " + character  + " was found at position : " + (i+1));
-					System.out.println("Character " + character  + " was found at position : " + (word.indexOf(character)+1));
-					
-				}else{
-					System.out.println(character  + " was not found ");	
+				//if character ifFound...
+				if(letters[i] == character){
+					System.out.println("Character " + character  + " was found at position : " + (i+1));
+					isFound = true;	//true
 				}
 			}
+			if(!isFound)//false
+				System.out.println(character  + " was not found ");	
 		}	  
 		scanner.close();
 		System.out.println("End of work...");
