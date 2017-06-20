@@ -12,7 +12,7 @@ public class Exercise8_CharacterAndWordCount {
 		System.out.println("Have your say ! : ");
 		String input = scanner.nextLine();
 		System.out.println(input);
-		String [] words = input.split(" ");
+		String [] words = input.split(" "); // regular expressions:  ("\\s+") for one or more spaces
 		System.out.println("Words : " + words.length);
 		System.out.println("Characters (with spaces) : " + input.length());
 		System.out.println("Characters (without spaces) : " + input.replace(" ", "").length());
