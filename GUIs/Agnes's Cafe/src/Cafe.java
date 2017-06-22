@@ -1,3 +1,7 @@
+
+import javax.swing.DefaultListModel;
+import sun.security.krb5.SCDynamicStoreConfig;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +18,10 @@ public class Cafe extends javax.swing.JFrame {
      * Creates new form Cafe
      */
     public Cafe() {
-        initComponents();
+        initComponents();// initComponents ALWAYS first
+        //first element on the list to be set as a default
+        cmbMealType.setSelectedItem(0);
+        
     }
 
     /**
@@ -41,9 +48,9 @@ public class Cafe extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         btnPlaceOrder = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbMealType = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        lstOptions = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -94,6 +101,7 @@ public class Cafe extends javax.swing.JFrame {
         txtArea.setColumns(20);
         txtArea.setLineWrap(true);
         txtArea.setRows(5);
+        txtArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtArea);
 
         btnPlaceOrder.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -104,14 +112,14 @@ public class Cafe extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        cmbMealType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Breakfast", "Lunch", "Dinner" }));
+        cmbMealType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMealTypeActionPerformed(evt);
+            }
         });
-        jScrollPane2.setViewportView(jList1);
+
+        jScrollPane2.setViewportView(lstOptions);
 
         jButton1.setText("Save to File");
 
@@ -167,39 +175,36 @@ public class Cafe extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jScrollPane2))))
-                        .addGap(18, 18, 18)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbOrange)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(rbTea)
-                                            .addComponent(rbCoffee)
-                                            .addComponent(rbCoke)
-                                            .addComponent(rbWater))
-                                        .addGap(2, 2, 2)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(rbTea)
+                                    .addComponent(rbCoffee)
+                                    .addComponent(rbCoke)
+                                    .addComponent(rbWater))
                                 .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                                .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(45, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +224,7 @@ public class Cafe extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -283,6 +288,50 @@ public class Cafe extends javax.swing.JFrame {
         txtArea.setText(order);
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
+    private void cmbMealTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMealTypeActionPerformed
+        //get the string selected in the comboBox
+        String mealSelected = cmbMealType.getSelectedItem().toString();
+        
+        DefaultListModel<String> model = new DefaultListModel<>();
+        
+        //if its brakfast add breakfast menu to the list
+        //if its lunch add lunch menu
+        switch(mealSelected){
+            case "Breakfast":
+                model.addElement("Sausages");
+                model.addElement("Bacon");
+                model.addElement("Onions");
+                model.addElement("Mushrooms");
+                model.addElement("Hashbrown");
+                model.addElement("Beans");
+                model.addElement("Toast");
+                model.addElement("Fried Egg");
+                model.addElement("Poached Egg");
+                model.addElement("Scrambled Egg");
+                break;
+            case "Lunch":
+                model.addElement("Sandwich");
+                model.addElement("Soup");
+                model.addElement("Chips");
+                model.addElement("Salad");
+                model.addElement("Crisps");
+                model.addElement("Wrap");
+                break;
+            case "Dinner":
+                model.addElement("Mashed Potatoe");
+                model.addElement("Braised Steak");
+                model.addElement("Chicken Wrap");
+                model.addElement("Chips");
+                model.addElement("Vegetables");
+                model.addElement("Gravy");
+                break;
+            default:
+                model.addElement("Choose Meal Type");
+                }
+        lstOptions.setModel(model); // loads the model into the option lists
+        
+    }//GEN-LAST:event_cmbMealTypeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -325,19 +374,19 @@ public class Cafe extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbKetchup;
     private javax.swing.JCheckBox cbMayo;
     private javax.swing.JCheckBox cbVinegar;
+    private javax.swing.JComboBox cmbMealType;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList lstOptions;
     private javax.swing.JPanel plnExtras;
     private javax.swing.JRadioButton rbCoffee;
     private javax.swing.JRadioButton rbCoke;
