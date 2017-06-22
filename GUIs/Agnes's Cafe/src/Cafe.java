@@ -1,5 +1,14 @@
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import sun.security.krb5.SCDynamicStoreConfig;
 
 /*
@@ -17,11 +26,24 @@ public class Cafe extends javax.swing.JFrame {
     /**
      * Creates new form Cafe
      */
+    //global variables
+    private boolean appendToFile; // true: yes, false : no,
+    
     public Cafe() {
         initComponents();// initComponents ALWAYS first
+        
         //first element on the list to be set as a default
         cmbMealType.setSelectedItem(0);
         
+        //select the append to file radio button
+        
+        //rbAppendToFile.doClick();
+        
+        rbTea.setActionCommand("tea");
+        rbCoffee.setActionCommand("coffee");
+        rbCoke.setActionCommand("coke");
+        rbOrange.setActionCommand("orange");
+        rbWater.setActionCommand("water"); 
     }
 
     /**
@@ -33,13 +55,14 @@ public class Cafe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        javax.swing.ButtonGroup buttonGroupDrinks = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        lbCafe = new javax.swing.JLabel();
+        lbImage = new javax.swing.JLabel();
+        lbMealType = new javax.swing.JLabel();
+        lbOptions = new javax.swing.JLabel();
+        lbDrink = new javax.swing.JLabel();
+        lbExtras = new javax.swing.JLabel();
         rbTea = new javax.swing.JRadioButton();
         rbCoffee = new javax.swing.JRadioButton();
         rbCoke = new javax.swing.JRadioButton();
@@ -51,51 +74,53 @@ public class Cafe extends javax.swing.JFrame {
         cmbMealType = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstOptions = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnSaveToFile = new javax.swing.JButton();
+        btnLoadFromFile = new javax.swing.JButton();
+        btnResetForm = new javax.swing.JButton();
         plnExtras = new javax.swing.JPanel();
         cbButter = new javax.swing.JCheckBox();
         cbVinegar = new javax.swing.JCheckBox();
         cbKetchup = new javax.swing.JCheckBox();
         cbMayo = new javax.swing.JCheckBox();
+        plnFileEditMode = new javax.swing.JPanel();
+        rbOverwrite = new javax.swing.JRadioButton();
+        bdAppendFile = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Chiller", 1, 48)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Agnes's Cafe");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbCafe.setFont(new java.awt.Font("Chiller", 1, 48)); // NOI18N
+        lbCafe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCafe.setText("Agnes's Cafe");
+        lbCafe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/breakfast.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        lbImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/breakfast.jpg"))); // NOI18N
+        lbImage.setText("jLabel2");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Meal Type");
+        lbMealType.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbMealType.setText("Meal Type");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Options");
+        lbOptions.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbOptions.setText("Options");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Drink");
+        lbDrink.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbDrink.setText("Drink");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("Extras");
+        lbExtras.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbExtras.setText("Extras");
 
-        buttonGroup1.add(rbTea);
+        buttonGroupDrinks.add(rbTea);
         rbTea.setText("Tea");
 
-        buttonGroup1.add(rbCoffee);
+        buttonGroupDrinks.add(rbCoffee);
         rbCoffee.setText("Coffee");
 
-        buttonGroup1.add(rbCoke);
+        buttonGroupDrinks.add(rbCoke);
         rbCoke.setText("Coke");
 
-        buttonGroup1.add(rbWater);
-        rbWater.setSelected(true);
+        buttonGroupDrinks.add(rbWater);
         rbWater.setText("Water");
 
-        buttonGroup1.add(rbOrange);
+        buttonGroupDrinks.add(rbOrange);
         rbOrange.setText("Orange");
 
         txtArea.setColumns(20);
@@ -121,11 +146,22 @@ public class Cafe extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(lstOptions);
 
-        jButton1.setText("Save to File");
+        btnSaveToFile.setText("Save to File");
+        btnSaveToFile.setEnabled(false);
+        btnSaveToFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveToFileActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Load from File");
+        btnLoadFromFile.setText("Load from File");
+        btnLoadFromFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadFromFileActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Reset");
+        btnResetForm.setText("Reset Form");
 
         cbButter.setText("Butter");
 
@@ -162,6 +198,37 @@ public class Cafe extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        plnFileEditMode.setBorder(javax.swing.BorderFactory.createTitledBorder("File Edit Mode"));
+
+        buttonGroup2.add(rbOverwrite);
+        rbOverwrite.setText("Overwrite");
+        rbOverwrite.setBorder(new javax.swing.border.MatteBorder(null));
+
+        buttonGroup2.add(bdAppendFile);
+        bdAppendFile.setText("Append To File");
+        bdAppendFile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout plnFileEditModeLayout = new javax.swing.GroupLayout(plnFileEditMode);
+        plnFileEditMode.setLayout(plnFileEditModeLayout);
+        plnFileEditModeLayout.setHorizontalGroup(
+            plnFileEditModeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plnFileEditModeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(plnFileEditModeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bdAppendFile)
+                    .addComponent(rbOverwrite))
+                .addGap(11, 11, 11))
+        );
+        plnFileEditModeLayout.setVerticalGroup(
+            plnFileEditModeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plnFileEditModeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bdAppendFile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbOverwrite)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,37 +241,39 @@ public class Cafe extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(lbMealType)
                                     .addComponent(cmbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(55, 55, 55)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
+                                    .addComponent(lbOptions)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbOrange)
-                                    .addComponent(jLabel5)
+                                    .addComponent(lbDrink)
                                     .addComponent(rbTea)
                                     .addComponent(rbCoffee)
                                     .addComponent(rbCoke)
                                     .addComponent(rbWater))
                                 .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(lbExtras)
                                     .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnSaveToFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLoadFromFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnResetForm, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(plnFileEditMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(45, Short.MAX_VALUE))))
+                        .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(lbCafe, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(72, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,48 +281,52 @@ public class Cafe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addComponent(lbImage))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbCafe, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbDrink)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbTea)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbCoffee)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbCoke)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbWater)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbOrange))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbExtras)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(plnFileEditMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSaveToFile, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLoadFromFile, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnResetForm, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbMealType)
+                            .addComponent(lbOptions, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbMealType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbTea)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbCoffee)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbCoke)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbWater)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbOrange))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -261,7 +334,25 @@ public class Cafe extends javax.swing.JFrame {
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
       
-        String order = "You ordered ";
+        //enable the FaveToFile button when an order has been placed
+        btnSaveToFile.setEnabled(true);
+        
+        //order...
+        String order = "";
+        //get the options selected from the list
+        String options = lstOptions.getSelectedValuesList().toString().toLowerCase();
+        
+        // adding menu's options list but without [ ]
+        order+=options.substring(1, options.length()-1);
+        
+        ButtonModel model = buttonGroupDrinks.getSelection();
+        if(model != null){
+            order+=", ";
+            order+=model.getActionCommand();
+        }
+        
+        
+      /*  OR .... 
         
         if(rbCoffee.isSelected())
             order+= "coffee";
@@ -286,6 +377,25 @@ public class Cafe extends javax.swing.JFrame {
         order+=".";
     
         txtArea.setText(order);
+        */
+        
+         Component [] allCheckBoxes = pnlExtras.getComponents();
+        /* Loop through all components in that panel */
+        for (Component c : allCheckBoxes) {
+            // Cast c down from a Component to a JCheckBox so
+            // I can call Checkbox methods 
+            JCheckBox cb = ((JCheckBox)c);
+            if (cb.isSelected()) { // If the checkbox is checked
+                // Get its text and add it onto the order
+                order += " and " + cb.getText().toLowerCase();
+            }
+        }        
+        // If the order String is empty show a message
+        if (order.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please choose something");
+        } else {
+            txtArea.setText("You ordered " + order + ".");
+        }
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     private void cmbMealTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMealTypeActionPerformed
@@ -332,6 +442,49 @@ public class Cafe extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbMealTypeActionPerformed
 
+    private void btnSaveToFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveToFileActionPerformed
+    // make sure there is text int the tezt Area
+        if(txtArea.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please place an order.");
+        }else{  // write the order out to file
+                //overwrite every time
+            try(FileWriter fw = new FileWriter( new File("order.txt"), true );
+                    PrintWriter pw = new PrintWriter(fw)){
+            pw.println(txtArea.getText());
+            JOptionPane.showMessageDialog(this, "Order written to file");
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Unable to create a file");
+            }catch(IOException e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Unable to create a file");
+            }
+        }
+    }//GEN-LAST:event_btnSaveToFileActionPerformed
+
+    private void btnLoadFromFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFromFileActionPerformed
+        try(FileReader fr = new FileReader("order.txt");
+                BufferedReader br = new BufferedReader(fr)){
+            
+            String line = "";
+            String wholeFile = "";
+            
+            while( (line = br.readLine()) != null){
+                wholeFile+=line + "\n";
+            }
+            //add the whole file to the textArea
+            if(wholeFile.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "File is empty");
+            }else{
+                txtArea.setText(wholeFile);
+            }
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "File could not be opened");
+        }
+    }//GEN-LAST:event_btnLoadFromFileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,29 +521,32 @@ public class Cafe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bdAppendFile;
+    private javax.swing.JButton btnLoadFromFile;
     private javax.swing.JButton btnPlaceOrder;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton btnResetForm;
+    private javax.swing.JButton btnSaveToFile;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox cbButter;
     private javax.swing.JCheckBox cbKetchup;
     private javax.swing.JCheckBox cbMayo;
     private javax.swing.JCheckBox cbVinegar;
     private javax.swing.JComboBox cmbMealType;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbCafe;
+    private javax.swing.JLabel lbDrink;
+    private javax.swing.JLabel lbExtras;
+    private javax.swing.JLabel lbImage;
+    private javax.swing.JLabel lbMealType;
+    private javax.swing.JLabel lbOptions;
     private javax.swing.JList lstOptions;
     private javax.swing.JPanel plnExtras;
+    private javax.swing.JPanel plnFileEditMode;
     private javax.swing.JRadioButton rbCoffee;
     private javax.swing.JRadioButton rbCoke;
     private javax.swing.JRadioButton rbOrange;
+    private javax.swing.JRadioButton rbOverwrite;
     private javax.swing.JRadioButton rbTea;
     private javax.swing.JRadioButton rbWater;
     private javax.swing.JTextArea txtArea;
