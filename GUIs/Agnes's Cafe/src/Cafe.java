@@ -16,7 +16,6 @@ import sun.security.krb5.SCDynamicStoreConfig;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author dsd09
@@ -28,22 +27,20 @@ public class Cafe extends javax.swing.JFrame {
      */
     //global variables
     private boolean appendToFile; // true: yes, false : no,
-    
+
     public Cafe() {
         initComponents();// initComponents ALWAYS first
-        
+
         //first element on the list to be set as a default
         cmbMealType.setSelectedItem(0);
-        
+
         //select the append to file radio button
-        
         //rbAppendToFile.doClick();
-        
         rbTea.setActionCommand("tea");
         rbCoffee.setActionCommand("coffee");
         rbCoke.setActionCommand("coke");
         rbOrange.setActionCommand("orange");
-        rbWater.setActionCommand("water"); 
+        rbWater.setActionCommand("water");
     }
 
     /**
@@ -56,7 +53,7 @@ public class Cafe extends javax.swing.JFrame {
     private void initComponents() {
 
         javax.swing.ButtonGroup buttonGroupDrinks = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroupExtras = new javax.swing.ButtonGroup();
         lbCafe = new javax.swing.JLabel();
         lbImage = new javax.swing.JLabel();
         lbMealType = new javax.swing.JLabel();
@@ -163,12 +160,16 @@ public class Cafe extends javax.swing.JFrame {
 
         btnResetForm.setText("Reset Form");
 
+        buttonGroupExtras.add(cbButter);
         cbButter.setText("Butter");
 
+        buttonGroupExtras.add(cbVinegar);
         cbVinegar.setText("Vinegar");
 
+        buttonGroupExtras.add(cbKetchup);
         cbKetchup.setText("Ketchup");
 
+        buttonGroupExtras.add(cbMayo);
         cbMayo.setText("Mayo");
 
         javax.swing.GroupLayout plnExtrasLayout = new javax.swing.GroupLayout(plnExtras);
@@ -200,11 +201,11 @@ public class Cafe extends javax.swing.JFrame {
 
         plnFileEditMode.setBorder(javax.swing.BorderFactory.createTitledBorder("File Edit Mode"));
 
-        buttonGroup2.add(rbOverwrite);
+        buttonGroupExtras.add(rbOverwrite);
         rbOverwrite.setText("Overwrite");
         rbOverwrite.setBorder(new javax.swing.border.MatteBorder(null));
 
-        buttonGroup2.add(bdAppendFile);
+        buttonGroupExtras.add(bdAppendFile);
         bdAppendFile.setText("Append To File");
         bdAppendFile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -333,63 +334,61 @@ public class Cafe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
-      
+
         //enable the FaveToFile button when an order has been placed
         btnSaveToFile.setEnabled(true);
-        
+
         //order...
         String order = "";
         //get the options selected from the list
         String options = lstOptions.getSelectedValuesList().toString().toLowerCase();
-        
+
         // adding menu's options list but without [ ]
-        order+=options.substring(1, options.length()-1);
-        
+        order += options.substring(1, options.length() - 1);
+
         ButtonModel model = buttonGroupDrinks.getSelection();
-        if(model != null){
-            order+=", ";
-            order+=model.getActionCommand();
+        if (model != null) {
+            order += ", ";
+            order += model.getActionCommand();
         }
+
+        /*  OR .... 
         
-        
-      /*  OR .... 
-        
-        if(rbCoffee.isSelected())
-            order+= "coffee";
-        else if (rbCoke.isSelected())
-            order+="coke";
-        else if (rbOrange.isSelected())
-            order+="orange";
-        else if (rbTea.isSelected())
-            order+="tea";
-        else
-            order+="water";
+         if(rbCoffee.isSelected())
+         order+= "coffee";
+         else if (rbCoke.isSelected())
+         order+="coke";
+         else if (rbOrange.isSelected())
+         order+="orange";
+         else if (rbTea.isSelected())
+         order+="tea";
+         else
+         order+="water";
         
    
-        if(cbButter.isSelected())
-            order+=" and butter";
-        if(cbKetchup.isSelected())
-            order+=" and ketchup";
-        if(cbMayo.isSelected())
-            order+=" and mayo";
-        if(cbVinegar.isSelected())
-            order+=" and vinegar";
-        order+=".";
+         if(cbButter.isSelected())
+         order+=" and butter";
+         if(cbKetchup.isSelected())
+         order+=" and ketchup";
+         if(cbMayo.isSelected())
+         order+=" and mayo";
+         if(cbVinegar.isSelected())
+         order+=" and vinegar";
+         order+=".";
     
-        txtArea.setText(order);
-        */
-        
-         Component [] allCheckBoxes = pnlExtras.getComponents();
+         txtArea.setText(order);
+         */
+        Component[] allCheckBoxes = pnlExtras.getComponents();
         /* Loop through all components in that panel */
         for (Component c : allCheckBoxes) {
             // Cast c down from a Component to a JCheckBox so
             // I can call Checkbox methods 
-            JCheckBox cb = ((JCheckBox)c);
+            JCheckBox cb = ((JCheckBox) c);
             if (cb.isSelected()) { // If the checkbox is checked
                 // Get its text and add it onto the order
                 order += " and " + cb.getText().toLowerCase();
             }
-        }        
+        }
         // If the order String is empty show a message
         if (order.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please choose something");
@@ -401,12 +400,12 @@ public class Cafe extends javax.swing.JFrame {
     private void cmbMealTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMealTypeActionPerformed
         //get the string selected in the comboBox
         String mealSelected = cmbMealType.getSelectedItem().toString();
-        
+
         DefaultListModel<String> model = new DefaultListModel<>();
-        
+
         //if its brakfast add breakfast menu to the list
         //if its lunch add lunch menu
-        switch(mealSelected){
+        switch (mealSelected) {
             case "Breakfast":
                 model.addElement("Sausages");
                 model.addElement("Bacon");
@@ -437,25 +436,25 @@ public class Cafe extends javax.swing.JFrame {
                 break;
             default:
                 model.addElement("Choose Meal Type");
-                }
+        }
         lstOptions.setModel(model); // loads the model into the option lists
-        
+
     }//GEN-LAST:event_cmbMealTypeActionPerformed
 
     private void btnSaveToFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveToFileActionPerformed
-    // make sure there is text int the tezt Area
-        if(txtArea.getText().isEmpty()) {
+        // make sure there is text int the tezt Area
+        if (txtArea.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please place an order.");
-        }else{  // write the order out to file
-                //overwrite every time
-            try(FileWriter fw = new FileWriter( new File("order.txt"), true );
-                    PrintWriter pw = new PrintWriter(fw)){
-            pw.println(txtArea.getText());
-            JOptionPane.showMessageDialog(this, "Order written to file");
-            }catch(FileNotFoundException e){
+        } else {  // write the order out to file
+            //overwrite every time
+            try (FileWriter fw = new FileWriter(new File("order.txt"), true);
+                    PrintWriter pw = new PrintWriter(fw)) {
+                pw.println(txtArea.getText());
+                JOptionPane.showMessageDialog(this, "Order written to file");
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Unable to create a file");
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Unable to create a file");
             }
@@ -463,22 +462,22 @@ public class Cafe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveToFileActionPerformed
 
     private void btnLoadFromFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFromFileActionPerformed
-        try(FileReader fr = new FileReader("order.txt");
-                BufferedReader br = new BufferedReader(fr)){
-            
+        try (FileReader fr = new FileReader("order.txt");
+                BufferedReader br = new BufferedReader(fr)) {
+
             String line = "";
             String wholeFile = "";
-            
-            while( (line = br.readLine()) != null){
-                wholeFile+=line + "\n";
+
+            while ((line = br.readLine()) != null) {
+                wholeFile += line + "\n";
             }
             //add the whole file to the textArea
-            if(wholeFile.isEmpty()) {
+            if (wholeFile.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "File is empty");
-            }else{
+            } else {
                 txtArea.setText(wholeFile);
             }
-            
+
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "File could not be opened");
@@ -526,7 +525,7 @@ public class Cafe extends javax.swing.JFrame {
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JButton btnResetForm;
     private javax.swing.JButton btnSaveToFile;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroupExtras;
     private javax.swing.JCheckBox cbButter;
     private javax.swing.JCheckBox cbKetchup;
     private javax.swing.JCheckBox cbMayo;
