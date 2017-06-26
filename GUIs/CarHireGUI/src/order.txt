@@ -1,0 +1,7 @@
+Your order : 
+Car make : Lexus, 
+Model : gs, 
+Transmission : manual, 
+Colour : silver, 
+Fuel type : any, 
+Number of seats : 7

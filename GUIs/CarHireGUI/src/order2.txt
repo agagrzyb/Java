@@ -1,0 +1,7 @@
+Your order : 
+Car make : Lexus, 
+Model : is, 
+Transmission : manual, 
+Colour : red, 
+Fuel type : petrol, 
+Number of seats : 5
