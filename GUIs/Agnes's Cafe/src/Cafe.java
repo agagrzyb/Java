@@ -1,4 +1,5 @@
 
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import sun.security.krb5.SCDynamicStoreConfig;
 
@@ -52,8 +54,8 @@ public class Cafe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.ButtonGroup buttonGroupDrinks = new javax.swing.ButtonGroup();
         buttonGroupExtras = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         lbCafe = new javax.swing.JLabel();
         lbImage = new javax.swing.JLabel();
         lbMealType = new javax.swing.JLabel();
@@ -105,19 +107,19 @@ public class Cafe extends javax.swing.JFrame {
         lbExtras.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbExtras.setText("Extras");
 
-        buttonGroupDrinks.add(rbTea);
+        buttonGroup1.add(rbTea);
         rbTea.setText("Tea");
 
-        buttonGroupDrinks.add(rbCoffee);
+        buttonGroup1.add(rbCoffee);
         rbCoffee.setText("Coffee");
 
-        buttonGroupDrinks.add(rbCoke);
+        buttonGroup1.add(rbCoke);
         rbCoke.setText("Coke");
 
-        buttonGroupDrinks.add(rbWater);
+        buttonGroup1.add(rbWater);
         rbWater.setText("Water");
 
-        buttonGroupDrinks.add(rbOrange);
+        buttonGroup1.add(rbOrange);
         rbOrange.setText("Orange");
 
         txtArea.setColumns(20);
@@ -265,8 +267,10 @@ public class Cafe extends javax.swing.JFrame {
                                     .addComponent(rbWater))
                                 .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbExtras)
-                                    .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lbExtras)
+                                        .addGap(11, 11, 11))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnPlaceOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnSaveToFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -304,7 +308,7 @@ public class Cafe extends javax.swing.JFrame {
                                 .addComponent(rbOrange))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbExtras)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(plnExtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -346,7 +350,7 @@ public class Cafe extends javax.swing.JFrame {
         // adding menu's options list but without [ ]
         order += options.substring(1, options.length() - 1);
 
-        ButtonModel model = buttonGroupDrinks.getSelection();
+        ButtonModel model = buttonGroup1.getSelection();
         if (model != null) {
             order += ", ";
             order += model.getActionCommand();
@@ -378,7 +382,7 @@ public class Cafe extends javax.swing.JFrame {
     
          txtArea.setText(order);
          */
-        Component[] allCheckBoxes = pnlExtras.getComponents();
+        Component[] allCheckBoxes = plnExtras.getComponents();
         /* Loop through all components in that panel */
         for (Component c : allCheckBoxes) {
             // Cast c down from a Component to a JCheckBox so
@@ -525,6 +529,7 @@ public class Cafe extends javax.swing.JFrame {
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JButton btnResetForm;
     private javax.swing.JButton btnSaveToFile;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupExtras;
     private javax.swing.JCheckBox cbButter;
     private javax.swing.JCheckBox cbKetchup;

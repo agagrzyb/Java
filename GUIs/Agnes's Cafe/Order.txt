@@ -1,3 +1,6 @@
 You ordered chips, water.
 You ordered braised steak, chicken wrap, chips, coffee and butter and ketchup.
 You ordered sandwich, soup, chips, crisps, coffee and butter and ketchup and mayo and vinegar.
+You ordered chicken wrapcoffee and mayo.
+You ordered chipscoffee and butter.
+You ordered chipscoffee.

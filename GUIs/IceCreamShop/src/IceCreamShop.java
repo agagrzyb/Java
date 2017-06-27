@@ -38,9 +38,9 @@ public class IceCreamShop extends javax.swing.JFrame {
         bgFlavour = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         plnToppings = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        cbFlake = new javax.swing.JCheckBox();
+        cbSprinkles = new javax.swing.JCheckBox();
+        cbSyrup = new javax.swing.JCheckBox();
         lblPrice1 = new javax.swing.JLabel();
         lblPrice2 = new javax.swing.JLabel();
         lblPrice3 = new javax.swing.JLabel();
@@ -74,15 +74,15 @@ public class IceCreamShop extends javax.swing.JFrame {
         plnToppings.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Toppings", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
         plnToppings.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jCheckBox1.setText("Flake");
+        cbFlake.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbFlake.setText("Flake");
 
-        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jCheckBox2.setText("Sprinkles");
+        cbSprinkles.setBackground(new java.awt.Color(255, 255, 255));
+        cbSprinkles.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbSprinkles.setText("Sprinkles");
 
-        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jCheckBox3.setText("Syrup");
+        cbSyrup.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbSyrup.setText("Syrup");
 
         lblPrice1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblPrice1.setText("$0.20");
@@ -100,9 +100,9 @@ public class IceCreamShop extends javax.swing.JFrame {
             .addGroup(plnToppingsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(plnToppingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox1))
+                    .addComponent(cbSyrup)
+                    .addComponent(cbSprinkles)
+                    .addComponent(cbFlake))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addGroup(plnToppingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPrice2)
@@ -115,16 +115,16 @@ public class IceCreamShop extends javax.swing.JFrame {
             .addGroup(plnToppingsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(plnToppingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
+                    .addComponent(cbFlake)
                     .addComponent(lblPrice1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(plnToppingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
+                    .addComponent(cbSprinkles)
                     .addComponent(lblPrice2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(plnToppingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrice3)
-                    .addComponent(jCheckBox3))
+                    .addComponent(cbSyrup))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -338,8 +338,23 @@ public class IceCreamShop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-       double price = 1.50;
-        System.out.print("Price : " + price);
+
+       double price=0;
+       if(rdSundae.isSelected()){
+       price = 1.90;
+       }else if(rdBananaSplit.isSelected()){
+       price = 2.50;
+       }else{
+       price = 1.50;
+       } 
+       //Toppings
+       if(cbFlake.isSelected())
+           price+=.2;
+       if(cbSprinkles.isSelected())
+           price+=.2;
+       if(cbSyrup.isSelected())
+           price+=.2;
+       txtPrice.setText("$ " + String.valueOf(price));
        
     }//GEN-LAST:event_btnOrderActionPerformed
 
@@ -383,9 +398,9 @@ public class IceCreamShop extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgFlavour;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnOrder;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox cbFlake;
+    private javax.swing.JCheckBox cbSprinkles;
+    private javax.swing.JCheckBox cbSyrup;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
