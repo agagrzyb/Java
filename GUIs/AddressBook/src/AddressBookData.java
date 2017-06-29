@@ -1,9 +1,10 @@
+//MODEL
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author dsd09
@@ -16,24 +17,35 @@ public class AddressBookData {
     private String lastname;
     private String email;
     private String phoneNumber;
-    
-    private static int idCounter=100;
+
+    private static int idCounter = 100;
 
     public AddressBookData() {
     }
 
-    public AddressBookData(String firstname, String lastname, String email, String phoneNumber) {
-        this.id = idCounter++;
+    public AddressBookData(int id, String firstname, String lastname, String email, String phoneNumber) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
+    public AddressBookData( String firstname, String lastname, String email, String phoneNumber) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+    
+
+    public void setId(int Id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
     }
-    
+
     public String getFirstname() {
         return firstname;
     }
@@ -68,13 +80,12 @@ public class AddressBookData {
 
     @Override
     public String toString() {
-        return "\nAddressBookData : " + 
-                "\nid=" + id + 
-                ", \nFirstname=" + firstname +
-                ", \nLastname=" + lastname + 
-                ", \nEmail=" + email + 
-                ", \nPhoneNumber=" + phoneNumber;
+        return "\nAddressBookData : "
+                + "\nid=" + id
+                + ", \nFirstname=" + firstname
+                + ", \nLastname=" + lastname
+                + ", \nEmail=" + email
+                + ", \nPhoneNumber=" + phoneNumber;
     }
-    
-}
 
+}

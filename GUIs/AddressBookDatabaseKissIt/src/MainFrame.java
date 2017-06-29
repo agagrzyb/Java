@@ -35,6 +35,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         //initalise an array list , it will be empty to start out with
         listOfData = new ArrayList<>();
+        
+        //Load all addressBookEntries when the form loads
+        btnSelect.doClick();
 
     }
 
@@ -143,12 +146,13 @@ public class MainFrame extends javax.swing.JFrame {
             plnBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plnBottomLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(plnBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLast)
-                    .addComponent(btnNext)
-                    .addComponent(btnPrevious)
-                    .addComponent(btnFirst)
-                    .addComponent(lblCurrentRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(plnBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCurrentRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(plnBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLast)
+                        .addComponent(btnNext)
+                        .addComponent(btnPrevious)
+                        .addComponent(btnFirst)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -418,8 +422,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         if (listOfData.isEmpty()) {
             //Clears the textFields and clears the label
-            btnClearAll.doClick();
+           // btnClearAll.doClick();  ----- in its own method
             //click the select all button for the user
+            clearAllTextFields();
         } else {
 
             //get an element from the arrayList
@@ -434,6 +439,19 @@ public class MainFrame extends javax.swing.JFrame {
             //put the current record info into the label
             lblCurrentRecord.setText((position + 1) + " of " + listOfData.size());
         }
+    }
+    
+    private void clearAllTextFields(){
+    
+        
+        for (Component c : plnTextFields.getComponents()) {
+            if (c instanceof JTextField) {
+                ((JTextField) c).setText("");
+            }
+        }
+        //clear the label
+        lblCurrentRecord.setText("0 of 0");
+        
     }
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
@@ -588,14 +606,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllActionPerformed
 
-        for (Component c : plnTextFields.getComponents()) {
-            if (c instanceof JTextField) {
-                ((JTextField) c).setText("");
-            }
-        }
-        //clear the label
-        lblCurrentRecord.setText("0 of 0");
-
+        clearAllTextFields();
+        
     }//GEN-LAST:event_btnClearAllActionPerformed
 
     /**

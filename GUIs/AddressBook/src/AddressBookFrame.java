@@ -1,4 +1,5 @@
 
+//VIEW
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -16,8 +17,10 @@ import javax.swing.JTextField;
 public class AddressBookFrame extends javax.swing.JFrame {
 
     //a reference to the the ArrayListManager class than can populate the ArrayList and return it to this frame
-    private ArrayListManager manager = new ArrayListManager();
-
+    // private ArrayListManager manager = new ArrayListManager(); --- array list, but now using database manager
+    
+    private DatabaseManager manager = new DatabaseManager();
+    
     //a reference to the array list of addres book entries created in th arrayList Manager class
     private ArrayList<AddressBookData> listOfData;
 
@@ -30,7 +33,7 @@ public class AddressBookFrame extends javax.swing.JFrame {
     public AddressBookFrame() {
         initComponents();
         // use method in the manager class to fill up the ArrayList
-        manager.populateAddressBookList();
+        //manager.populateAddressBookList();
 
     }
 
@@ -434,7 +437,11 @@ public class AddressBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearAllTextFieldsActionPerformed
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
-        if (txtFirstName.getText().isEmpty()
+      
+        public boolean insert();
+        
+        
+        /* if (txtFirstName.getText().isEmpty()
                 || txtLastName.getText().isEmpty()
                 || txtEmail.getText().isEmpty()
                 || txtPhoneNumber.getText().isEmpty()) {
@@ -447,22 +454,22 @@ public class AddressBookFrame extends javax.swing.JFrame {
 
             btnSelectAll.doClick();
             btnLast.doClick();
-        }
+        }*/
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-       if(txtID.getText().isEmpty()){
-       JOptionPane.showMessageDialog(this, "Please select an entry to delete");
-       }else{
-       boolean isRemoved = manager.delete(Integer.parseInt(txtID.getText()));
-       if(isRemoved){
-       JOptionPane.showMessageDialog(this, "Entry was removed");
-       }else{
-         JOptionPane.showMessageDialog(this, "Entry not removed");
-       }
+        if (txtID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select an entry to delete");
+        } else {
+            boolean isRemoved = manager.delete(Integer.parseInt(txtID.getText()));
+            if (isRemoved) {
+                JOptionPane.showMessageDialog(this, "Entry was removed");
+            } else {
+                JOptionPane.showMessageDialog(this, "Entry not removed");
+            }
        //int nextPosition = position + 1;
-       
-       }
+
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
