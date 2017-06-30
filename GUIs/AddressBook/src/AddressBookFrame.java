@@ -22,7 +22,8 @@ public class AddressBookFrame extends javax.swing.JFrame {
     private DatabaseManager manager = new DatabaseManager();
     
     //a reference to the array list of addres book entries created in th arrayList Manager class
-    private ArrayList<AddressBookData> listOfData;
+    //initialised to prevent NullPointerException when the size is checked
+    private ArrayList<AddressBookData> listOfData = new ArrayList<>();
 
     //the current position in the arraylist
     private int position;
@@ -166,6 +167,11 @@ public class AddressBookFrame extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnClearAllTextFields.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnClearAllTextFields.setText("Clear all TextFields");
@@ -423,41 +429,85 @@ public class AddressBookFrame extends javax.swing.JFrame {
 
     private void btnClearAllTextFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllTextFieldsActionPerformed
 
-        //clear the last name search texfields
+             clearAllFields();
+    }//GEN-LAST:event_btnClearAllTextFieldsActionPerformed
+
+     private void clearAllFields() {
+        // Clear the last name search textfields
         txtLastNameSearch.setText("");
 
-        //loop through the centre panel and clear all textfields in it
+        // loop through the centre panel and clear all
+        // textfields in it
         for (Component com : plnAddressBookEntries.getComponents()) {
             if (com instanceof JTextField) {
                 ((JTextField) com).setText("");
             }
         }
-        //claer the navigation label
-        lblCurrentRecord.setText("");
-    }//GEN-LAST:event_btnClearAllTextFieldsActionPerformed
 
+        // Clear the navigation label
+        lblCurrentRecord.setText("");
+    }
+    
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
       
-        public boolean insert();
-        
-        
-        /* if (txtFirstName.getText().isEmpty()
+        /* Check that none of the textfields are empty */
+        if (txtFirstName.getText().isEmpty()
                 || txtLastName.getText().isEmpty()
                 || txtEmail.getText().isEmpty()
                 || txtPhoneNumber.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "You cannot have empty textfields");
-        } else {
-            //call the insert method in the manager class
-            manager.insert(txtFirstName.getText(), txtLastName.getText(), txtEmail.getText(), txtPhoneNumber.getText());
-            //show a message box to say it worked
-            JOptionPane.showMessageDialog(this, txtFirstName.getText() + " " + txtLastName.getText() + " was added");
 
-            btnSelectAll.doClick();
-            btnLast.doClick();
-        }*/
+            JOptionPane.showMessageDialog(this,
+                    "You cannot have empty textfields");
+            
+        } else if (txtFirstName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, 
+                    "Firstname must be 50 characters or under");
+            // requestFocus() clicks/ puts the cursor in the textfield
+            txtFirstName.requestFocus();
+            txtFirstName.selectAll(); // selects all the text
+        } else if (txtLastName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, 
+                    "Lastname must be 50 characters or under");
+            txtLastName.requestFocus();
+            txtLastName.selectAll();
+        } else if (txtEmail.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this, 
+                    "Email must be 50 characters or under");
+            txtEmail.requestFocus();
+            txtEmail.selectAll();
+        } else if (txtPhoneNumber.getText().length() > 20) {
+            JOptionPane.showMessageDialog(this, 
+                    "Phone number must be 20 characters or under");
+            txtPhoneNumber.requestFocus();
+            txtPhoneNumber.selectAll();
+        } else {
+            /* Call the insert method in the manager class */
+            boolean isSuccessful
+                    = manager.insert(txtFirstName.getText(),
+                            txtLastName.getText(),
+                            txtEmail.getText(),
+                            txtPhoneNumber.getText());
+
+            if (isSuccessful) {
+                /* Show a message box to say it worked */
+                JOptionPane.showMessageDialog(this,
+                        txtFirstName.getText() + " "
+                        + txtLastName.getText() + " was added");
+                /* When a item is added to an arraylist, it goes to
+                 the end. So, select all records and click on the
+                 last button and we will see the new entry. */
+                btnSelectAll.doClick();
+                btnLast.doClick();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Error inserting " + txtFirstName.getText());
+            }
+        }
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+       
+        
         if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please select an entry to delete");
         } else {
@@ -471,6 +521,60 @@ public class AddressBookFrame extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+       if (txtID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "ID is empty, please select an entry to update");
+       } 
+       /* Check that none of the textfields are empty */
+       else if (txtFirstName.getText().isEmpty()
+                || txtLastName.getText().isEmpty()
+                || txtEmail.getText().isEmpty()
+                || txtPhoneNumber.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "You cannot have empty textfields");
+
+        } else if (txtFirstName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this,
+                    "Firstname must be 50 characters or under");
+            // requestFocus() clicks/ puts the cursor in the textfield
+            txtFirstName.requestFocus();
+            txtFirstName.selectAll(); // selects all the text
+        } else if (txtLastName.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this,
+                    "Lastname must be 50 characters or under");
+            txtLastName.requestFocus();
+            txtLastName.selectAll();
+        } else if (txtEmail.getText().length() > 50) {
+            JOptionPane.showMessageDialog(this,
+                    "Email must be 50 characters or under");
+            txtEmail.requestFocus();
+            txtEmail.selectAll();
+        } else if (txtPhoneNumber.getText().length() > 20) {
+            JOptionPane.showMessageDialog(this,
+                    "Phone number must be 20 characters or under");
+            txtPhoneNumber.requestFocus();
+            txtPhoneNumber.selectAll();
+        } else {
+            boolean isSuccessful = 
+                    manager.update(Integer.parseInt(txtID.getText()), 
+                    txtFirstName.getText(), txtLastName.getText(),
+                    txtEmail.getText(), txtPhoneNumber.getText());
+            
+            if (isSuccessful) {
+                /* Show a message box to say it worked */
+                JOptionPane.showMessageDialog(this,
+                        "Entry updated");
+                listOfData = manager.getAllEntries();
+                populateFields();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Error inserting " + txtFirstName.getText());
+            }
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments

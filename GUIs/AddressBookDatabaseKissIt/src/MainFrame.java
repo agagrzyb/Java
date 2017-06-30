@@ -456,17 +456,26 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
 
-        String url = "jdbc:sqlserver://localhost;integratedSecurity=true;databaseName=AddressBook";
+         String url
+                = "jdbc:sqlserver://localhost;"
+                + "integratedSecurity=true;"
+                + "databaseName=AddressBook";
 
-        try (Connection conn = DriverManager.getConnection(url)) {
+        try (Connection conn
+                = DriverManager.getConnection(url)) {
 
-            // ? in the sql are parameters. after you create a PreparedStaement
-            //with this sql. 
-            //need to specify where each parameter will get its value from
-            //using stmt.setString()
-            String sql = "INSERT INTO AddressBookEntries VALUES "
-                    + "(?, ?, ?, ?)";
+            /* The question marks in the SQL are parameters. After you create a 
+             PreparedStatement with this SQL, you need to specify where each 
+             parameter will get its value from, using:
+             stmt.setString(parameterNum, value) */
+            String sql = "INSERT INTO AddressBookEntries "
+                    + "VALUES (?, ?, ?, ?)";
 
+            /* PreparedStatement is used to execute SQL against the database, 
+             it is more secure than a Statement which could be used instead.  
+             PreparedStatement is an interface and therefore cannot be 
+             instantiated. You use the prepareStatement(sql) on a Connection 
+             object to create a PrepareStatement for you. */
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, txtFirstname.getText());
@@ -475,9 +484,11 @@ public class MainFrame extends javax.swing.JFrame {
             stmt.setString(4, txtPhoneNumber.getText());
 
             int rowCount = stmt.executeUpdate();
-            JOptionPane.showMessageDialog(this, rowCount + "row inserted");
-
-            //after insertion get all records from the database and show the last one
+            JOptionPane.showMessageDialog(this, rowCount
+                    + " row inserted");
+            
+            /* After a record is inserted, get all records from
+            the database and show the last one. */
             btnSelect.doClick();
             btnLast.doClick();
 
@@ -485,8 +496,6 @@ public class MainFrame extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Unable to insert");
         }
-
-
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

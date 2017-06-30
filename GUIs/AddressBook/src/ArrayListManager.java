@@ -78,6 +78,10 @@ public class ArrayListManager implements AddressBookDataDAO {
 
     @Override
     public boolean update(int id, String firstname, String lastname, String email, String phoneNumber) {
+        // Search the arraylist for an entry with a matching
+        // id. When a match is found, change each field to
+        // that of the parameters
+        
         return true;
     }
 
