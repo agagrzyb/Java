@@ -30,7 +30,7 @@ function Circle(x,y,dx,dy,radius){
         //arc //circle
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI*2,             false);
-        c.strokeStyle = 'blue';
+        c.strokeStyle = 'pink';
         c.stroke();
 }
 
@@ -51,24 +51,29 @@ this.update = function() {
     this.draw();
     }
 }
+/*
+var circleArray = [];
+
 for(var i = 0; i < 100; i++){
     var circle = new Circle(200, 200, 3, 3, 30);
 }
-/*
+*/
+
 //storing all objects into an array
 var circleArray = [];
+
 for(var i = 0; i < 100; i++){
     //instantiate an OBJECT
     var x = Math.random()*innerWidth;
     var y = Math.random()*innerHeight;
     //can be negative or positive, and*8 to speed it up
-    var dx = (Math.random() - 0.5)*8;
-    var dy = (Math.random() - 0.5)*8;
+    var dx = (Math.random() - 0.5);
+    var dy = (Math.random() - 0.5);
     var radius = 30;
     circleArray.push(new Circle(x, y, dx, dy, radius));
 }
-console.log(circleArray);
-*/
+//console.log(circleArray);
+
 
 //method to create animation
 //1.create a function
@@ -79,7 +84,12 @@ function animate(){
     //to clear canvas every time the new circle is drawn-->when the function is being called
     c.clearRect(0, 0, innerWidth, innerHeight);
     //executing draw function inside an object
-    circle.update();
+    //circle.update();
+
+    //call the update() on every[i]
+    for(var i = 0; i < circleArray.length; i++){
+        circleArray[i].update();
+    }
 }
 //has to be called for this loop to work
 animate();
