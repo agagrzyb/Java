@@ -23,32 +23,38 @@ function Circle(x,y,dx,dy,radius){
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
+
 //creating a method within an object to create a circle every time this function is called anonymous function
-    this.draw = function(){
+    this.draw = function() {
         //console.log('hello there');
-         //arc //circle
-    c.beginPath();
-    c.arc(this.x,this.y,this.radius,0, Math.PI*2,false);
-    c.strokeStyle = 'blue';
-    c.stroke();
+        //arc //circle
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, Math.PI*2,             false);
+        c.strokeStyle = 'blue';
+        c.stroke();
 }
-this.update = function(){
+
+this.update = function() {
  //moving circle by 1px --> x += 1;
 
-    if(this.x + radius > innerWidth ||
-     this.x - this.radius < 0){
+    if(this.x + this.radius > innerWidth ||
+         this.x - this.radius < 0){
         this. dx = -this.dx;
     }
-    if(this.y + radius > innerHeight ||
-     this.y - this.radius < 0){
+    if(this.y + this.radius > innerHeight ||
+         this.y - this.radius < 0){
         this.dy = -this.dy;
     }
     this.x += this.dx; 
     this.y += this.dy;
+
     this.draw();
     }
 }
-
+for(var i = 0; i < 100; i++){
+    var circle = new Circle(200, 200, 3, 3, 30);
+}
+/*
 //storing all objects into an array
 var circleArray = [];
 for(var i = 0; i < 100; i++){
@@ -59,9 +65,10 @@ for(var i = 0; i < 100; i++){
     var dx = (Math.random() - 0.5)*8;
     var dy = (Math.random() - 0.5)*8;
     var radius = 30;
-    circleArray.push(new Circle(x,y,dx,dy,radius));
+    circleArray.push(new Circle(x, y, dx, dy, radius));
 }
 console.log(circleArray);
+*/
 
 //method to create animation
 //1.create a function
