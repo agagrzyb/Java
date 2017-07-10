@@ -1,18 +1,14 @@
-//console.log("Hello there...");
 var canvas = document.querySelector('canvas');
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-//
 var c = canvas.getContext('2d');
 //arc //circle
+/*
 c.beginPath();
 c.arc(300,300,30,0, Math.PI*2,false);
 c.strokeStyle = 'blue';
 c.stroke();
-
-
+*/
 
 //JavaScript OBJECT !!!
 //capital letter to indicate this is an object
@@ -29,9 +25,10 @@ function Circle(x,y,dx,dy,radius){
         //console.log('hello there');
         //arc //circle
         c.beginPath();
-        c.arc(this.x, this.y, this.radius, 0, Math.PI*2,             false);
+        c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
         c.strokeStyle = 'pink';
         c.stroke();
+        c.fill();
 }
 
 this.update = function() {
@@ -53,7 +50,6 @@ this.update = function() {
 }
 /*
 var circleArray = [];
-
 for(var i = 0; i < 100; i++){
     var circle = new Circle(200, 200, 3, 3, 30);
 }
@@ -64,8 +60,8 @@ var circleArray = [];
 
 for(var i = 0; i < 100; i++){
     //instantiate an OBJECT
-    var x = Math.random()*innerWidth;
-    var y = Math.random()*innerHeight;
+    var x = Math.random()*(innerWidth-radius*2)+radius;
+    var y = Math.random()*(innerHeight-radius*2)+radius;
     //can be negative or positive, and*8 to speed it up
     var dx = (Math.random() - 0.5);
     var dy = (Math.random() - 0.5);
@@ -73,7 +69,6 @@ for(var i = 0; i < 100; i++){
     circleArray.push(new Circle(x, y, dx, dy, radius));
 }
 //console.log(circleArray);
-
 
 //method to create animation
 //1.create a function
