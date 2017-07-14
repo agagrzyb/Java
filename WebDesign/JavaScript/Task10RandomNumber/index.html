@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Task 10 Random Number</title>
+    <!-- *******************************************************************
+  * *
+  * FILE NAME: html5-template.htm *
+  * FOLDER NAME(s): Desktop/practicefolder *
+  * AUTHOR: Agnes*
+  * DATE: 14/07/2017 *
+  * *
+  * DESCRIPTION: *
+  * HTML5 code template that we will use for future exercises. *
+  * *
+  ******************************************************************* -->
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        .divStyle {
+            background-color: aqua;
+            border: 2px dashed navy;
+        }
+    </style>
+    <script src="scripts/script.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Random Number</h1>
+        <p>A number between 0 and 10 , generated at random :
+            <script>
+                document.write(randomNum());
+            </script> <br>Refres page for another number.</p>
+        <h1>Internal</h1>
+        <p>A number between 0 and 10 , generated at random and updated every 2 seconds:
+            <span id="randomNumber"></span>.
+        </p>
+
+</body>
+
+</html>
