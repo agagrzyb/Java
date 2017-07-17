@@ -4,8 +4,8 @@ console.log('mcr_sf Log created in console window');
 var mcr_sf = {};
 
 mcr_sf.myName = "Aga";
-console.log("mcr_sf.myName " + mcr_sf.myName);
+//console.log("mcr_sf.myName " + mcr_sf.myName);
 
 mcr_sf.myHello = function () {
-    console.log("Hello " + mcr_sf.myName);
+   // console.log("Hello " + mcr_sf.myName);
 }

@@ -23,6 +23,14 @@
             margin: 0 auto;
             width: 500px;
         }
+        #textBox{
+            border: 1px solid silver;
+            background-color: thistle;
+            color: indigo;
+            text-align: center;
+            height: 60px;
+            line-height: 60px;
+        }
     </style>
 
 </head>
@@ -30,6 +38,18 @@
 <body>
     <div id="wrapper">
         <h1></h1>
+        <div id="textBox">
+            &nbsp;
+        </div>
+        <script>
+mcr_sp.zoomText("textBox", "Hello World", 20, 2000, 0, 24, 48, "fadeIn");
+</script>
+<p id="textPara">
+    ....
+</p>
+        <script>
+mcr_sp.zoomText("textPara", "Hello World Paragraph", 40, 2000, 24, 48, "fadeIn");
+</script>
     </div>
 
 </body>
