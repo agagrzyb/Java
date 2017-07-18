@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>JavaScript Unobstrusive events with addEventListener</title>
+ <!-- ***********************************************************************
+  *                                                                         *
+  * FILE NAME: index.htm                                                    *
+  * FOLDER NAME(s): Desktop/JS11 Unobstrusive events with addEventListener  *
+  * AUTHOR: Stefan Weissenmayer                                             *
+  * DATE: 18/07/2017                                                        *
+  * REV: 1                                                                  *
+  * DESCRIPTION:                                                            *
+  * JavaScript Unobstrusive events with addEventListener                    *
+  *                                                                         *
+  *************************************************************************** -->
+  <script src="scripts/script.js"></script>
+  <style>
+  #wrapper {
+    width: 600px;
+	margin: auto;
+	background-color: orange;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="wrapper">
+  <h1>Unobstrusive events with addEventListener</h1>
+  <p>Click anywhere on the orange wrapper to log hello in the console (F12).</p>
+  <p>Use any of the <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">
+  HTML DOM Events</a>, just ensure not to use the "on" prefix. For example, 
+  use "click" instead of "onclick" when specifying the event guide.</p>
+  
+  
+
+  </div>
+  </body>
+  <script>addEvents();</script>
+</html>

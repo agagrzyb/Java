@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>JavaScript Libraries and multiple JS files</title>
+ <!-- *******************************************************************
+  *                                                                     *
+  * FILE NAME: index.htm                                                *
+  * FOLDER NAME(s): Desktop/JS10 Libraries and multiple JS files        *
+  * AUTHOR: Stefan Weissenmayer                                         *
+  * DATE: 17/07/2017                                                    *
+  * REV: 1                                                              *
+  * DESCRIPTION:                                                        *
+  * JavaScript Libraries and multiple JS files                          *
+  *                                                                     *
+  *********************************************************************** -->
+  <script src="scripts/mcr_sf_0.1.js"></script>
+  <script src="scripts/mcr_sp_0.1.js"></script>
+  <script src="scripts/script.js"></script>
+  <style>
+  #textBox {
+    border: 1px solid silver;
+	background-color: thistle;
+	color: indigo;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="wrapper">
+  <h1>Multiple JS Files</h1>
+  <p>This HTML file  loads three different JavaScript files. Note the load order
+     within the &lt;head> element:</p>
+   <ol>
+     <li>mcr_sf_0.1.js - this is going to be our mycourseresource (mcr) JavaScript file with standard function (sf).</li>
+     <li>mcr_sp_0.1.js - this is going to be our mycourseresource (mcr) JavaScript file with our something pretty (sp) function. 
+         These functions may require the mcr_sf_0.1.js file.</li>
+     <li>script.js - This is the bespoke file specific for the current website project. 
+         Functions in this file may avail of functions from the mcr_sf_0.1.js and mcr_sp_0.1.js files.</li>
+   </ol>
+  
+  <div id="textBox">
+     TEST&nbsp;
+  </div>
+  <script>
+    mcr_sp.zoomText("textBox", ["Hello World", "Hello Again"], 10, 2000, 0, 48, "fadeIn");
+  </script>
+  <p id="textPara">
+     ....
+  </p>
+  <script>
+    mcr_sp.zoomText("textPara", ["Hello Paragraph", "Hello Again Para"], 40, 2000, 12, 24, "fadeIn");
+  </script>
+
+  <a href="https://www.google.ie" id="pulseLink">GOOGLE</a>
+  <script>
+    mcr_sp.zoomText("pulseLink", ["Google"], 1, 20, 18, 24, "fadeIn");
+  </script>
+  
+  
+
+  </div>
+  </body>
+</html>
