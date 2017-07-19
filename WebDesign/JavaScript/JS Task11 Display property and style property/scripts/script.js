@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
       // function with if/else statement that toggles the 'secondDiv' ON and OFF when the h1 element is clicked
       function toggleDisplay() {
             console.log('inside toggleDiplay function');
-            if (divTag.style.display == 'block' || divTag.style.display == '') {
-                  divTag.style.display = 'none';
+            if (divTag.style.display == 'none') {
+                  divTag.style.display = 'block';
             }
             else {
-                  divTag.style.display = 'block';
+                  divTag.style.display = 'none';
             }
       }
 
