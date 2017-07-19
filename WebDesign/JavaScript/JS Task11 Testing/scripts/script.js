@@ -1,5 +1,5 @@
 
-// document.write('Hello there');
+
 console.log('script.js file loaded');
 
 // step9. create a function
