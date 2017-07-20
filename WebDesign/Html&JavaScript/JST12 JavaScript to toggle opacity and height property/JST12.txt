@@ -1,0 +1,27 @@
+JS Task 12 opacity property of style property:
+==============================================
+
+Note: Work in teams of max 88 coders and use paper
+      and pen to document your coding solution steps.
+
+1.  Create standard HTML5 file and web folders.
+2.  Name HTML5 file index.htm.
+3.  Create script.js file and insert JavaScript
+    to create log entry "script.js file loaded".
+4.  Link script file to HTML file.
+5.  Create one <div> element by typing the code
+    into your HTML file. Give this element the
+    id "wrapper".
+6.  Nest one <h1> element and a second <div> 
+    element, by typing the code into your HTML 
+    file, into your "wrapper" div.
+7.  Type some heading text into you h1 element.
+8.  Nest some <p> elements, by typing the code 
+    into your HTML file, into your second div.
+9.  Type some text into your <p> elements.
+10. Create a function that will toggle the opacity
+    property of your second div between '1' 
+    and '0', and the height property from default
+    to zero. 
+11. Add one unobstrusive event to your h1 element
+    that will invoke function created in step 10.
