@@ -51,34 +51,58 @@ function readSelAndProp() {
 //appendchild
 	var newElement = document.createElement("newDiv");
 	newElement.id = "newDiv";
+
+// Append h6 into div.  
+	var node = document.createElement("h6");
+	var textnode = document.createTextNode("wrapper");
+	node.appendChild(textnode);
+	document.getElementById('table').appendChild(node);
+
 	newElement = createTable();
 
 	//table
 	function createTable() {
-		console.log("inside createTable function");
+		console.log("***inside createTable function***");
     // Create table.
     var table = document.createElement('table');
     // Insert New Row for table at index '0'.
     var row1 = table.insertRow(0);
     // Insert New Column for Row1 at index '0'.
     var row1col1 = row1.insertCell(0);
-    row1col1.innerHTML = 'Col1';
+    row1col1.innerHTML = 'Property';
     // Insert New Column for Row1 at index '1'.
     var row1col2 = row1.insertCell(1);
-    row1col2.innerHTML = 'Col2';
-    // Insert New Column for Row1 at index '2'.
-    var row1col3 = row1.insertCell(2);
-    row1col3.innerHTML = 'Col3';
+    row1col2.innerHTML = 'Property Value';
+
+    var row2 = table.insertRow(1);
+    var row2col1 = row2.insertCell(0);
+    row2col1.innerHTML = 'height (computed) :';
+    var row2col2 = row2.insertCell(1);
+    row2col2.innerHTML = 'x px';
+
+	var row3 = table.insertRow(1);
+    var row3col1 = row3.insertCell(0);
+    row3col1.innerHTML = 'height (defined) :';
+    var row3col2 = row3.insertCell(1);
+    row3col2.innerHTML = 'x px';
+
+	var row4 = table.insertRow(1);
+    var row4col1 = row4.insertCell(0);
+    row4col1.innerHTML = 'width (computed) :';
+    var row4col2 = row4.insertCell(1);
+    row4col2.innerHTML = 'x px';
+
+	var row5 = table.insertRow(1);
+    var row5col1 = row5.insertCell(0);
+    row5col1.innerHTML = 'width (defined) :';
+    var row5col2 = row5.insertCell(1);
+    row5col2.innerHTML = 'x px';
+	
     // Append Table into div.
     var div = document.getElementById('table');
     div.appendChild(table);
 }
-	
-
 }
-
-
-
 
 function getPropValues() {
 	console.log("***Inside  getPropValues() function***");
@@ -119,25 +143,6 @@ function getPropValues() {
 	console.log("computed wrapper " + cssProperty + " = " + propValue);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
