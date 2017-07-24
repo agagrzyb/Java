@@ -8,7 +8,8 @@ var c = canvas.getContext('2d');
 var x = Math.random() * innerWidth;
 var y = Math.random() * innerHeight;
 var radius = Math.random() * 200;
-var randomColor = function(){Math.random() * 256;}
+var randomColor = function(){}
+   // return Math.floor(Math.random() * 256);}
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -32,7 +33,7 @@ function move(){
     c.arc(x,y,radius,0,Math.PI*2,false);
     //c.fillStyle = "rgb(51,51,"+ randomColor+")";
     c.fillStyle = "rgb("+ randomColor() +","+ randomColor() + "," + randomColor() +")";
-    console.log(randomColor);
+    console.log(randomColor());
     c.fill();
     c.stroke();
 
