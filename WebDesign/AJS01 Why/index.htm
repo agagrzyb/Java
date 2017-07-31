@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>AJS01 Why</title>
+ <!-- ***************************************************************
+  *                                                                 *
+  * FILE NAME: index.htm                                            *
+  * FOLDER NAME(s): Desktop/AJS01 Why                               *
+  * AUTHOR: Stefan Weissenmayer                                     *
+  * DATE: 31/07/2017                                                *
+  * REV: 1                                                          *
+  * DESCRIPTION:                                                    *
+  * AJS01 Why                                                       *
+  *                                                                 *
+  ******************************************************************* -->
+  <style type="text/css">
+  #wrapper {		
+	background-color: white;
+	width: 1200px;
+	margin: auto;
+	margin-top: 0;	
+  }
+
+  .goodWarning {
+    font-weight: bold;
+	color: green;
+	background-color: white;
+  }
+
+  .warning {
+    font-weight: bold;
+	color: red;
+	background-color: white;
+  }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="scripts/script.js"></script>
+  </head>
+  <body id="myBody" ng-app>
+  <div id="wrapper">
+  <h1>The JavaScript Way</h1>
+  Data Input: <input type="text" id="textInputJS">
+  <p>Data entered: <span id="dataJS"></span></p>
+
+  <h1>The JQuery Way</h1>
+  Data Input: <input type="text" id="textInputJQ">
+  <p>Data entered: <span id="dataJQ"></span></p>
+
+  <h1>The AngularJS Way</h1>
+  Data Input: <input type="text" id="textInputAJS" ng-model="textInputAJS">
+  <p>Data entered: <span id="dataAJS" ng-bind="textInputAJS"></span></p>
+
+  
+	<div class="clearBoth">
+	  &nbsp;
+	</div>
+  </div>
+  </body>
+</html>

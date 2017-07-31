@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>AJS04 if and directive syntax</title>
+ <!-- ***************************************************************
+  *                                                                 *
+  * FILE NAME: index.htm                                            *
+  * FOLDER NAME(s): Desktop/AJS04 if and directive syntax           *
+  * AUTHOR: Stefan Weissenmayer                                     *
+  * DATE: 31/07/2017                                                *
+  * REV: 1                                                          *
+  * DESCRIPTION:                                                    *
+  * AJS04 if and directive syntax                                   *
+  *                                                                 *
+  ******************************************************************* -->
+  <style type="text/css">
+  #wrapper {		
+	background-color: white;
+	width: 1200px;
+	margin: auto;
+	margin-top: 0;	
+  }
+
+  .goodWarning {
+    font-weight: bold;
+	color: green;
+	background-color: white;
+  }
+
+  .warning {
+    font-weight: bold;
+	color: red;
+	background-color: white;
+  }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- script src="scripts/script.js"></script -->
+  </head>
+  <body id="myBody" ng-app ng-init="myNgTickBox=false">
+  <div id="wrapper">
+
+  <h1>The AngularJS if and directive syntax</h1>
+  <input type="checkbox" id="anyTickBox" ng-model="myNgTickBox"><br>
+  <input ng-if="myNgTickBox" type="text" id="anyTextField"><br>
+  <input ng-readonly="myNgTickBox" ng-model="myTextField" type="text" id="anyTextField2" value="A bit of text in 2"><br>
+  <input ng-disabled="myNgTickBox" type="text" id="anyTextField3" value="A bit of text in 3"><br>
+  <p><span data-ng-bind="myTextField"></span><br>
+  <span data-ng:bind="myTextField"></span><br>
+  <span data:ng:bind="myTextField"></span></p>
+  
+  <p><span ng-bind="myTextField"></span><br>
+  <span ng:bind="myTextField"></span><br>
+  <span ng:bind="myTextField"></span></p>
+
+  <p><span x-ng-bind="myTextField"></span><br>
+  <span x-ng:bind="myTextField"></span><br>
+  <span x:ng:bind="myTextField"></span></p>
+
+  <p><span data_ng_bind="myTextField"></span><br>
+  <span x_ng_bind="myTextField"></span><br>
+  <span ng_bind="myTextField"></span></p>
+
+
+  <p>{{myTextField}}</p>
+  
+  
+  
+ 
+
+
+  
+	<div class="clearBoth">
+	  &nbsp;
+	</div>
+  </div>
+  </body>
+</html>

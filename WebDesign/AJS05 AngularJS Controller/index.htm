@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>AJS05 AngularJS Controller</title>
+ <!-- ***************************************************************
+  *                                                                 *
+  * FILE NAME: index.htm                                            *
+  * FOLDER NAME(s): Desktop/AJS05 AngularJS Controller              *
+  * AUTHOR: Stefan Weissenmayer                                     *
+  * DATE: 31/07/2017                                                *
+  * REV: 1                                                          *
+  * DESCRIPTION:                                                    *
+  * AJS05 AngularJS Controller                                      *
+  *                                                                 *
+  ******************************************************************* -->
+  <style type="text/css">
+  #wrapper {		
+	background-color: white;
+	width: 1200px;
+	margin: auto;
+	margin-top: 0;	
+  }
+
+  .goodWarning {
+    font-weight: bold;
+	color: green;
+	background-color: white;
+  }
+
+  .warning {
+    font-weight: bold;
+	color: red;
+	background-color: white;
+  }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="scripts/script.js"></script>
+  </head>
+  <body id="myBody">
+  <h1>The AngularJS Controller</h1>
+
+  <div id="wrapper">
+  <div id="myFirstDiv" ng-app="myFirstApp" ng-controller="myController">
+  Data: <input type="text" ng-model="ngData1">
+  <button ng-click="showData1(ngData1)">Show Data</button>
+  </div>
+
+ 
+ 
+	<div class="clearBoth">
+	  &nbsp;
+	</div>
+  </div>
+  </body>
+</html>

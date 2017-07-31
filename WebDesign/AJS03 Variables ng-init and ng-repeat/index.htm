@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>AJS03 Variables</title>
+ <!-- ***************************************************************
+  *                                                                 *
+  * FILE NAME: index.htm                                            *
+  * FOLDER NAME(s): Desktop/AJS03 Variables ng-init and ng-repeat   *
+  * AUTHOR: Stefan Weissenmayer                                     *
+  * DATE: 31/07/2017                                                *
+  * REV: 1                                                          *
+  * DESCRIPTION:                                                    *
+  * AJS03 Variables                                                 *
+  *                                                                 *
+  ******************************************************************* -->
+  <style type="text/css">
+  #wrapper {		
+	background-color: white;
+	width: 1200px;
+	margin: auto;
+	margin-top: 0;	
+  }
+
+  .goodWarning {
+    font-weight: bold;
+	color: green;
+	background-color: white;
+  }
+
+  .warning {
+    font-weight: bold;
+	color: red;
+	background-color: white;
+  }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- script src="scripts/script.js"></script -->
+  </head>
+  <body id="myBody" ng-app ng-init="myNgString='Hello Class'; myNgNumber=1; myNGBool=true; myNgArray=['HTML', 'CSS', 'JavaScript']; myNgObject={class: '2017/2018', center: 'Finglas'}">
+  <div id="wrapper">
+
+  <h1>The AngularJS Variables With 'ng-init'</h1>
+  <p>myNgString= {{myNgString}}</p>
+  <p>myNgNumber= {{myNgNumber}}</p>
+  <p>myNGBool= {{myNGBool}}</p>
+  <p>myNgArray= {{myNgArray}}</p>
+  <p>myNgArray[0]= {{myNgArray[0]}}<br>
+  myNgArray[1]= {{myNgArray[1]}}<br>
+  myNgArray[2]= {{myNgArray[2]}}<br></p>
+  <p>myNgObject= {{myNgObject}}<br>
+  <p>myNgObject.class= {{myNgObject.class}}<br>
+  <p>myNgObject.center= {{myNgObject.center}}</p>
+
+  <p>View <a href="https://www.w3schools.com/angular/ng_ng-init.asp">AngularJS ng-init Directive</a>
+   for more info.</p>
+
+
+   
+   
+  <h1>The AngularJS Variables With 'ng-repeat'</h1> 
+  <p>List of myNgArray &lt;ul>:</p>
+  <ul>
+  <li ng-repeat="arrayEl in myNgArray">{{arrayEl}}</li>
+  </ul>
+  
+  <p>List of myNgArray &lt;p></p>
+  <p ng-repeat="arrayEl in myNgArray">{{arrayEl}}</p>
+  
+  <p>List of myNgArray &lt;div></p>
+  <div ng-repeat="arrayEl in myNgArray">{{arrayEl}}</div>
+   
+  <p>List of myNgArray Tables &lt;tr></p>
+  <table border='1'>
+  <tr ng-repeat="arrayEl in myNgArray"><td>{{myNgNumber+1}}</td><td>{{arrayEl}}</td></tr>
+  </table>
+   
+
+  <p>View <a href="https://www.w3schools.com/angular/ng_ng-repeat.asp">AngularJS ng-repeat Directive</a>
+   for more info.</p>
+
+  
+	<div class="clearBoth">
+	  &nbsp;
+	</div>
+  </div>
+  </body>
+</html>
