@@ -1,10 +1,9 @@
 package Chapter_2;
 
-public class Operators {
+public class Loops {
 
 	public static void main(String[] args) {
-		// % modulus
-		System.out.println(9/3);
+		// TODO Auto-generated method stub
 
 	}
 
