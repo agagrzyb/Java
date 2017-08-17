@@ -97,7 +97,8 @@ public class DatesAndTimes {
 		Period rightWay = Period.ofYears(2);
 		rightWay = rightWay.plus(Period.ofWeeks(3));
 		rightWay = rightWay.plus(Period.ofDays(4));
-		System.out.println("rightWay of using static methods : " + rightWay);
+		System.out.println("rightWay of using static methods"
+				+ " : " + rightWay);
 		
 
 		
